@@ -14,7 +14,7 @@ public class FileCom {
 	//ファイル拡張子名
 	static final String txt = ".txt";
 	//ユーザーファイル作成時のパス指定
-	static final String userpath = ".\\UserDate";
+	static final String userpath = ".\\UserData";
 	
 	/*
 	 * ファイル作成を行う
