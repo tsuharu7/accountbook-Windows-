@@ -59,7 +59,7 @@ public class FileCom {
     	 //ユーザー名初期化
     	 String username = null;
     	 
-    	 String searchPath = userpath + fileName + txt;
+    	 String searchPath = userpath + "\\" + fileName + txt;
     	 Path file = Paths.get(searchPath);
     	 
     	 if (Files.exists(file)) {
