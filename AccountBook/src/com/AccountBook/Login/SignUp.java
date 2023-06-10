@@ -76,7 +76,7 @@ public class SignUp {
 				
 				if (feedBack.equals("success")){
 					System.out.println("アカウント作成が完了しました.ようこそAccountBookの世界へ");
-					 Logs.createAcLogs(feedBack);
+					 Logs.createAcLogs(fileName);
 					System.out.println("新しく作成したアカウントでログインをお試しください");
 					break userRegloop;
 				}else if (feedBack.equals("exist")) {
