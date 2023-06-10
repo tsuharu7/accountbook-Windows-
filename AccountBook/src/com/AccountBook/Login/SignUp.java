@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.AccountBook.Display.Display;
 import com.AccountBook.Exit.Exit;
 import com.AccountBook.File.FileCom;
+import com.AccountBook.logs.*;
 
 public class SignUp {
 	
@@ -35,8 +36,9 @@ public class SignUp {
 						String userNam = KB.nextLine();
 						
 						Display.line();
-						
-						if (userNam.matches("Exit|exit")) {
+						if(userNam==null || userNam.length()==0) {
+							System.out.println("<<<ERROR>>>この項目を空白にはできません");
+						}else if (userNam.matches("Exit|exit")) {
 							Exit.exit();
 						}else if (userNam.length()>20) {
 							System.out.println("<<<ERROR>>> ユーザー名は20文字以内で入力してください");
@@ -54,8 +56,9 @@ public class SignUp {
 						String userPas = KB.nextLine();
 						
 						Display.line();
-						
-						if (userPas.matches("Exit|exit")) {
+						if(userPas==null||userPas.length()==0){
+							System.out.println("<<<ERROR>>>この項目を空白にできません");
+						}else if (userPas.matches("Exit|exit")) {
 							Exit.exit();
 						}else if (userPas.length()>20) {
 							System.out.println("<<<ERROR>>> パスワードは20文字以内で入力してください");
@@ -73,6 +76,7 @@ public class SignUp {
 				
 				if (feedBack.equals("success")){
 					System.out.println("アカウント作成が完了しました.ようこそAccountBookの世界へ");
+					 Logs.createAcLogs(feedBack);
 					System.out.println("新しく作成したアカウントでログインをお試しください");
 					break userRegloop;
 				}else if (feedBack.equals("exist")) {

@@ -59,5 +59,18 @@ public class Logs {
 		FileCom.logWrite(sendLog);
 		
 	}
+	
+	public static void createAcLogs(String FileName) {
+		String[] fileName = FileName.split(",");
+		String userName = fileName[0];
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
+		String curDatTime = dtf.format(now);
+	    
+		String sendLog = curDatTime + "," + userName + "," + "新規アカウントを作成";
+		
+		FileCom.logWrite(sendLog);
+	}
 
 }
