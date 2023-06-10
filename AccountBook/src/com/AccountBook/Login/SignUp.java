@@ -37,7 +37,7 @@ public class SignUp {
 						
 						Display.line();
 						
-						if (userNam.equals("Exit")) {
+						if (userNam.matches("Exit|exit")) {
 							Exit.exit();
 						}else if (userNam.length()>20) {
 							System.out.println("<<<ERROR>>> ユーザー名は20文字以内で入力してください");
@@ -56,7 +56,7 @@ public class SignUp {
 						
 						Display.line();
 						
-						if (userPas.equals("Exit")) {
+						if (userPas.matches("Exit|exit")) {
 							Exit.exit();
 						}else if (userPas.length()>20) {
 							System.out.println("<<<ERROR>>> パスワードは20文字以内で入力してください");

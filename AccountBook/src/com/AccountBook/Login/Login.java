@@ -23,7 +23,7 @@ public class Login {
 				loginloop:
 					while(true) {
 						Display.line(2);
-						System.out.println("ユーザー名を入力してください（新規登録はXを入力");
+						System.out.println("ユーザー名を入力してください（新規登録はNを入力)");
 						System.out.print("入力：");
 		
 						String userNam = KB.nextLine();
@@ -31,7 +31,7 @@ public class Login {
 						if (userNam.matches("N|n")) {
 							SignUp.signup();
 							break loginloop;
-						}else if (userNam.equals("Exit")) {
+						}else if (userNam.matches("Exit|exit")) {
 							Exit.exit();
 						}else {
 							userName = userNam;
@@ -43,7 +43,7 @@ public class Login {
 		
 						String userPas = KB.nextLine();
 						
-						if(userPas.equals("Exit")) {
+						if(userPas.matches("Exit|exit")) {
 							Exit.exit();
 						}else {
 							userPass = userPas;
