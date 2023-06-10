@@ -1,11 +1,10 @@
 package com.AccountBook.Login;
 
-import com.AccountBook.File.*;
-import com.AccountBook.Display.*;
-import com.AccountBook.Exit.*;
-
-import java.io.File;
 import java.util.Scanner;
+
+import com.AccountBook.Display.Display;
+import com.AccountBook.Exit.Exit;
+import com.AccountBook.File.FileCom;
 
 public class SignUp {
 	
@@ -76,7 +75,7 @@ public class SignUp {
 					System.out.println("アカウント作成が完了しました.ようこそAccountBookの世界へ");
 					System.out.println("新しく作成したアカウントでログインをお試しください");
 					break userRegloop;
-				}else if (feedBack.equals("exists")) {
+				}else if (feedBack.equals("exist")) {
 					System.out.println("<<<ERROR>>>ユーザー名が既に存在しています。別のユーザー名をお試しください");
 				}else if (feedBack.equals("error")) {
 					System.out.println("<<<ERROR>>>登録にエラーが発生しました");
