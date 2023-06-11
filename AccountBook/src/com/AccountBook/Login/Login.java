@@ -11,7 +11,7 @@ public class Login {
 	public static String login() {
 		outerloop:
 			while(true) {
-				Display.sectorMes("AccountBookへようこそ!");
+				Display.sectorMes("ようこそ！　アカウントブックへ！");
 				Display.line(1);
 				
 				Scanner KB = new Scanner(System.in);
