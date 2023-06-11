@@ -7,7 +7,7 @@ public class Exit {
 	
 	// プログラム上でExitと入力するとプログラムを終了する処理(戻り値、引数なし）
 	public static void exit() {
-		Display.line(3);
+		Display.line();
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		Logs.exitLogs();
 		System.out.println("Exitが入力されたため、プログラムを終了します!");
