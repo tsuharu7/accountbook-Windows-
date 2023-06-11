@@ -1,15 +1,16 @@
 package com.AccountBook.Login;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.AccountBook.Display.Display;
 import com.AccountBook.Exit.Exit;
 import com.AccountBook.File.FileCom;
-import com.AccountBook.logs.*;
+import com.AccountBook.logs.Logs;
 
 public class SignUp {
 	
-	public static void signup() {
+	public static void signup() throws SecurityException, IOException {
 		
 		Display.line(2);
 		//部分遷移メッセージの表示
@@ -76,7 +77,7 @@ public class SignUp {
 				
 				if (feedBack.equals("success")){
 					System.out.println("アカウント作成が完了しました.ようこそAccountBookの世界へ");
-					 Logs.createAcLogs(fileName);
+					 Logs.printDebugLog(Class.class.getName(), fileName, "新規アカウントを作成");
 					System.out.println("新しく作成したアカウントでログインをお試しください");
 					break userRegloop;
 				}else if (feedBack.equals("exist")) {
