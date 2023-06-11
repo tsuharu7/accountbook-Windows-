@@ -18,7 +18,7 @@ public class Exit {
 		System.exit(0);
 	}
 	
-	public static void exit(String FileName) throws SecurityException, IOException {
+	public static void exit(String FileName) throws Exception {
 		
 		Display.line(3);
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
