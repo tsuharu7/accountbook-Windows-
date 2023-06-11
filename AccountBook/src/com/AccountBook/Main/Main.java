@@ -2,10 +2,10 @@ package com.AccountBook.Main;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import com.AccountBook.Display.Display;
 import com.AccountBook.Login.Login;
 import com.AccountBook.logs.Logs;
+import com.AccountBook.Features.Search.*;
 
 public class Main {
 
@@ -14,8 +14,7 @@ public class Main {
 		System.out.println("<<TIPS>> プログラムの入力画面でExitと入力するとプログラムを終了できます");
 		Display.line();
 		sleep(3000);
-		
-		Display.catList();
+	
 		
 		//Loginクラスloginメソッド呼び出し
 		//引数:なし
@@ -40,18 +39,20 @@ public class Main {
 				System.out.println("以下のメニューから実行するものを入力してください");
 				Display.line(2);
 				
-				System.out.println("(T) テスト");
+				System.out.println("(S) 家計簿の内容を検索");
 				System.out.println("(L) ログアウト");
+
 				
 				
 				System.out.print("入力：");
 				String uChoice = KB.next();
 				
-				if (uChoice.equals("T")) {
-					System.out.println("TESTが選択されました");
+				if (uChoice.equals("S")) {
+					Search.CSearch(Filename);
 				} else if (uChoice.equals("L")){
 					Display.line(1);
 					System.out.println("ログアウトします");
+					KB.close();
 					Logs.printDebugLog(Class.class.getName(), Filename, "ログアウトしました");
 					System.exit(0);
 				}else {

@@ -11,9 +11,8 @@ import com.AccountBook.File.FileCom;
 public class Login {
 	
 	public static String login() throws SecurityException, IOException {
-		outerloop:
 			while(true) {
-				Display.sectorMes("ようこそ！　アカウントブックへ！");
+				Display.sectorMes("ようこそ！　Ａｃｃｏｕｎｔ　Ｂｏｏｋへ！");
 				Display.line(1);
 				
 				Scanner KB = new Scanner(System.in);
@@ -24,7 +23,7 @@ public class Login {
 				
 				loginloop:
 					while(true) {
-						Display.line(2);
+						Display.line(1);
 						System.out.println("ユーザー名を入力してください（新規登録はNを入力)");
 						System.out.print("入力：");
 		
@@ -59,14 +58,11 @@ public class Login {
 							System.out.println("ユーザー名またはパスワードが正しくありません。再度入力してください");
 						} else {
 							feedBack =fileName;
+							KB.close();
 							return fileName;
 						}
 					}
 			}
-				
-				
-		
-		
 	}
 	
 	
