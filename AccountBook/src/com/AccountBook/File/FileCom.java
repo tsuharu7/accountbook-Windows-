@@ -15,9 +15,9 @@ import com.AccountBook.logs.Logs;
 public class FileCom {
 	
 	//ファイル拡張子名
-	static final String txt = ".txt";
+	public static final String txt = ".txt";
 	//ユーザーファイル作成時のパス指定
-	static final String userpath = ".\\UserData";
+	public static final String userpath = ".\\UserData";
 	
 	/*
 	 * ファイル作成を行う
@@ -67,12 +67,8 @@ public class FileCom {
     	 Path file = Paths.get(searchPath);
     	 
     	 if (Files.exists(file)) {
-    		 /*
-    		  * インデックス0：ユーザー名
-    		  * 　　　　　　1：パスワード
-    		  */
-    		 String[] userList = fileName.split(",");
-    		 username = userList[0];
+   
+    		 username = searchPath;
     	 } 
     	 
     	 return username;
