@@ -1,7 +1,6 @@
-package com.AccountBook.Features;
+package com.AccountBook.File;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,14 +10,13 @@ import java.util.Calendar;
 import com.AccountBook.Common.Common;
 import com.AccountBook.Display.Display;
 import com.AccountBook.Exit.Exit;
-import com.AccountBook.File.FileCom;
 import com.AccountBook.logs.Logs;
 
 /**
  * ID、記入日、カテゴリ、名前、金額を書き込む
  *
  */
-public class Write {
+public class FileWrite {
 	
 	static String name;
 	static String day;
@@ -105,14 +103,11 @@ public class Write {
 		} catch (NumberFormatException e) {
 			Logs.printErrorLog(e.getMessage());
 		}
-			
-		
-		
-		File file = new File(FileCom.userpath + "\\" + Filename + FileCom.txt);
 		
 		if (!FileCom.SearchFile(Filename).equals(null)) {
-			FileWriter fw = new FileWriter(file, true);
-			fw.write(day + "," + category + "," + name + "," + money);
+			FileWriter fw = new FileWriter(FileCom.userpath +"\\"+ Filename + FileCom.txt, true);
+			fw.write(day + "," + category + "," + name + "," + money + "\r\n");
+			fw.close();
 		} else {
 			System.out.println("ファイルが存在しないため書き込みに失敗しました。");
 		}

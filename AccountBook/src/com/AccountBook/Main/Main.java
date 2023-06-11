@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.AccountBook.Display.Display;
-import com.AccountBook.Features.Write;
 import com.AccountBook.Features.Search.Search;
+import com.AccountBook.File.FileWrite;
 import com.AccountBook.Login.Login;
 import com.AccountBook.logs.Logs;
 
@@ -53,7 +53,7 @@ public class Main {
 				if (uChoice.equals("S")) {
 					Search.CSearch(Filename);
 				}else if (uChoice.equals("W")) {
-					Write.fileWrite(Filename);
+					FileWrite.fileWrite(Filename);
 				}else if (uChoice.equals("L")){
 					Display.line(1);
 					System.out.println("ログアウトします");
