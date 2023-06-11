@@ -18,7 +18,7 @@ public class FileCom {
 	public static final String txt = ".txt";
 	//ユーザーファイル作成時のパス指定
 	public static final String userpath = ".\\UserData";
-	
+	public static String FileName;
 	/*
 	 * ファイル作成を行う
 	 * @param ファイル名
@@ -61,6 +61,8 @@ public class FileCom {
 
      public static String SearchFile(String fileName) {
     	 //ユーザー名初期化
+    	 
+    	 
     	 String username = null;
     	 
     	 String searchPath = userpath + "\\" + fileName + txt;
@@ -68,10 +70,10 @@ public class FileCom {
     	 
     	 if (Files.exists(file)) {
    
-    		 username = searchPath;
+    		 username = fileName;
     	 } 
     	 
-    	 return fileName + txt;
+    	 return username;
      }
      
      /*

@@ -10,3 +10,5 @@
 情報: java.lang.Class  %,ログインしました [日 6月 11 20:19:32 JST 2023]
 情報: java.lang.Class  %,ログアウトしました [日 6月 11 20:23:01 JST 2023]
 情報: java.lang.Class  %,ログインしました [日 6月 11 20:23:19 JST 2023]
+情報: java.lang.Class  test,ログインしました [日 6月 11 20:56:27 JST 2023]
+情報: java.lang.Class  test,ログアウトしました [日 6月 11 20:56:56 JST 2023]

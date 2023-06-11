@@ -17,7 +17,7 @@ public class FileRead {
 		
 		
 		try {
-			reader = new BufferedReader(new FileReader(userpath+"\\"+FileName));
+			reader = new BufferedReader(new FileReader(userpath+"\\"+FileName+".txt"));
 			String line = reader.readLine();
 
 			while (line != null) {
