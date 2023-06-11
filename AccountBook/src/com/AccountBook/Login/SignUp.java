@@ -12,7 +12,7 @@ public class SignUp {
 	
 	public static void signup() throws SecurityException, IOException {
 		
-		Display.line(2);
+		Display.line(1);
 		//部分遷移メッセージの表示
 		//戻り値：なし
 		//引数：新規新規登録画面
@@ -20,7 +20,7 @@ public class SignUp {
 		
 		System.out.println();
 		System.out.println("新規登録を開始します。ようこそ!");
-		Display.line(2);
+		Display.line(1);
 		Scanner KB = new Scanner(System.in);
 		
 		String userName;
@@ -30,7 +30,7 @@ public class SignUp {
 			while(true) {
 				userNamloop:
 					while(true) {
-						Display.line(2);
+						Display.line(1);
 						System.out.println("登録したいユーザー名を入力してください(20文字以内）");
 						System.out.print("入力>");
 	
@@ -50,7 +50,7 @@ public class SignUp {
 					}
 				userPasloop:
 					while(true) {
-						Display.line(3);
+						Display.line(1);
 						System.out.println("登録したいパスワードを入力してください(20文字以内）");
 						System.out.print("入力>");
 	
@@ -69,7 +69,7 @@ public class SignUp {
 						}
 					}
 				
-				Display.line(3);
+				Display.line(2);
 				
 				String fileName = userName +"," + userPass;
 				
@@ -91,14 +91,7 @@ public class SignUp {
 			
 			}
 		
-		
-		
-		
-		
-
-		
-		
-		
+		KB.close();	
 	}
 
 }

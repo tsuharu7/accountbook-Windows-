@@ -25,6 +25,10 @@ public class Display {
 		
 	}
 	
+	public static void showTips() {
+		System.out.println("<<TIPS>> プログラムの入力画面でExitと入力するとプログラムを終了できます");
+		System.out.println("<<TIPS>> ここより先からは入力画面でCancelと入力すると処理をキャンセルしメニューへ戻ることができます");
+	}
 	
 	public static void catList() {
 		Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　　カテゴリー　　一覧　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
