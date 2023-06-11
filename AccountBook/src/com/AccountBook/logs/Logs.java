@@ -1,76 +1,46 @@
 package com.AccountBook.logs;
 
-import com.AccountBook.File.*;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 
 public class Logs {
-	//ログイン時に成功したファイル名を受け取り、ログインユーザー名、ログイン時間をログとして残す
-	public static void loginLogs(String FileName) {
-		
-		String[] fileName = FileName.split(",");
+	
+	//ログファイル出力先パス
+	private static final String DebugLogpath = ".\\SystemsLogs\\DebugLog.txt";
+	//エラーログ出力先パス
+	private static final String ErrorLogpath = ".\\SystemsLogs\\ErrorLog.txt";
+	
+	public static void printDebugLog(String className, String Filename, String message) throws SecurityException, IOException {
+		String[] fileName = Filename.split(",");
 		String userName = fileName[0];
+		String msg = className + "  " + userName + "," + message;
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		String curDatTime = dtf.format(now);
-	    
-		String sendLog = curDatTime + "," + userName + "," + "ログインしました";
+		Logger logger = Logger.getLogger(className);
 		
-		FileCom.logWrite(sendLog);
+		FileHandler fh = new FileHandler(DebugLogpath, true);
+		fh.setFormatter(new SimpleFormatter());
+		logger.addHandler(fh);
 		
-	}
-	//ログアウト時に　ログインされた者のファイル名を受け取り、ログインユーザー名、ログアウト時間をログとして残す
-	public static void logoutLogs(String FileName) {
-		String[] fileName = FileName.split(",");
-		String userName = fileName[0];
+		logger.setLevel(Level.INFO);
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		String curDatTime = dtf.format(now);
-	    
-		String sendLog = curDatTime + "," + userName + "," + "ログアウトしました";
-		
-		FileCom.logWrite(sendLog);
-	}
-	//強制終了時（Exitが入力された）場合にログを残す(ログイン完了前もExitできるが、この場合はユーザー名を残さない）
-	public static void exitLogs() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		String curDatTime = dtf.format(now);
-	    
-		String sendLog = curDatTime + "," + "ログイン前のためユーザなし" + "," + "強制終了(Exit)しました";
-		
-		FileCom.logWrite(sendLog);
-		
-	}
-	//強制終了時（Exitが入力された）場合にログを残す(ログイン完了前もExitできるが、この場合はユーザー名を残さない）
-	public static void exitLogs(String FileName) {
-		String[] fileName = FileName.split(",");
-		String userName = fileName[0];
-		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		String curDatTime = dtf.format(now);
-	    
-		String sendLog = curDatTime + "," + userName + "," + "強制終了（Exit)しました";
-		
-		FileCom.logWrite(sendLog);
-		
+		logger.log(Level.INFO, msg);
 	}
 	
-	public static void createAcLogs(String FileName) {
-		String[] fileName = FileName.split(",");
-		String userName = fileName[0];
+	public static void printErrorLog(Object msg) throws SecurityException, IOException  {
+        Logger logger = Logger.getLogger("Error");
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		String curDatTime = dtf.format(now);
-	    
-		String sendLog = curDatTime + "," + userName + "," + "新規アカウントを作成";
+		FileHandler fh = new FileHandler(ErrorLogpath, true);
+		fh.setFormatter(new SimpleFormatter());
+		logger.addHandler(fh);
 		
-		FileCom.logWrite(sendLog);
+		logger.setLevel(Level.INFO);
+		
+		logger.log(Level.INFO, "エラーメッセージ", msg);
+		
 	}
 
 }

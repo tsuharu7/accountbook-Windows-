@@ -1,11 +1,12 @@
 package com.AccountBook.File;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import com.AccountBook.logs.Logs;
 
 /*
  * ファイル作成、削除、書き込み、検索を行う
@@ -17,8 +18,6 @@ public class FileCom {
 	static final String txt = ".txt";
 	//ユーザーファイル作成時のパス指定
 	static final String userpath = ".\\UserData";
-	//ログファイル出力先パス
-	static final String logpath = ".\\SystemsLogs\\log.txt";
 	
 	/*
 	 * ファイル作成を行う
@@ -26,7 +25,7 @@ public class FileCom {
 	 * @return ファイル作成できた場合、true、それ以外false
 	 */
 	
-	public static String CreateFile(String fileName) {
+	public static String CreateFile(String fileName) throws SecurityException, IOException {
 		//ファイル作成できたか判定する文字列
 		String result;
 		checkDir(userpath);
@@ -48,6 +47,7 @@ public class FileCom {
 		} catch (Exception e) {
 			
 			result = "error";
+			Logs.printErrorLog(e);
 		} 
 		
 		return result;
@@ -76,28 +76,6 @@ public class FileCom {
     	 } 
     	 
     	 return username;
-     }
-     
-     /*
-      * ログ書き込み
-      * @param 文字列
-      * @retrn なし
-      */
-     
-     public static void logWrite(String sendLog) {
-    	 
-    	 try {
-    		File logFile = new File(logpath);
-    		
-    		FileWriter fw = new FileWriter(logFile, true);
-			
-			fw.write(sendLog + "\r\n");
-			
-			fw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-    	 
      }
      
      /*

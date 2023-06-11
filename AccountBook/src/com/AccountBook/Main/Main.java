@@ -1,13 +1,15 @@
 package com.AccountBook.Main;
 
-import com.AccountBook.Display.Display;
-import com.AccountBook.Login.*;
-import com.AccountBook.logs.*;
+import java.io.IOException;
 import java.util.Scanner;
+
+import com.AccountBook.Display.Display;
+import com.AccountBook.Login.Login;
+import com.AccountBook.logs.Logs;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SecurityException, IOException {
 		Scanner KB = new Scanner(System.in);
 		System.out.println("<<TIPS>> プログラムの入力画面でExitと入力するとプログラムを終了できます");
 		Display.line();
@@ -22,8 +24,8 @@ public class Main {
 		
 		//login ログを記録するメソッド呼び出し
 		//引数：なし
-		//戻り値:なし
-		Logs.loginLogs(Filename);
+		//戻り値:なしn
+		Logs.printDebugLog(Class.class.getName(), Filename, "ログインしました");
 		
 		
 	
@@ -50,7 +52,7 @@ public class Main {
 				} else if (uChoice.equals("L")){
 					Display.line(1);
 					System.out.println("ログアウトします");
-					Logs.logoutLogs(Filename);
+					Logs.printDebugLog(Class.class.getName(), Filename, "ログアウトしました");
 					System.exit(0);
 				}else {
 					System.out.println("正しい選択を確認できませんでした");
@@ -61,11 +63,11 @@ public class Main {
 		
 
 	}
-	public static void sleep(int num) {
+	public static void sleep(int num) throws SecurityException, IOException {
 		try {
 			Thread.sleep(num);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Logs.printErrorLog(e);
 		}
 	}
 

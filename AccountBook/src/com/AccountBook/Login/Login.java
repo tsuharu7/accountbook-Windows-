@@ -1,14 +1,16 @@
 package com.AccountBook.Login;
 
+import java.io.IOException;
 import java.util.Scanner;
-import com.AccountBook.Display.*;
-import com.AccountBook.Exit.*;
-import com.AccountBook.File.*;
+
+import com.AccountBook.Display.Display;
+import com.AccountBook.Exit.Exit;
+import com.AccountBook.File.FileCom;
 
 
 public class Login {
 	
-	public static String login() {
+	public static String login() throws SecurityException, IOException {
 		outerloop:
 			while(true) {
 				Display.sectorMes("ようこそ！　アカウントブックへ！");
