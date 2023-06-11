@@ -10,7 +10,10 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner KB = new Scanner(System.in);
 		System.out.println("<<TIPS>> プログラムの入力画面でExitと入力するとプログラムを終了できます");
+		Display.line();
 		sleep(3000);
+		
+		Display.catList();
 		
 		//Loginクラスloginメソッド呼び出し
 		//引数:なし
@@ -21,6 +24,9 @@ public class Main {
 		//引数：なし
 		//戻り値:なし
 		Logs.loginLogs(Filename);
+		
+		
+	
 		
 		//メインメニューのセクション名を表示
 		//引数:なし
