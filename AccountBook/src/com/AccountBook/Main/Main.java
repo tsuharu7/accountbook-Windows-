@@ -2,14 +2,16 @@ package com.AccountBook.Main;
 
 import java.io.IOException;
 import java.util.Scanner;
+
 import com.AccountBook.Display.Display;
+import com.AccountBook.Features.Write;
+import com.AccountBook.Features.Search.Search;
 import com.AccountBook.Login.Login;
 import com.AccountBook.logs.Logs;
-import com.AccountBook.Features.Search.*;
 
 public class Main {
 
-	public static void main(String[] args) throws SecurityException, IOException {
+	public static void main(String[] args) throws Exception {
 		Scanner KB = new Scanner(System.in);
 		System.out.println("<<TIPS>> プログラムの入力画面でExitと入力するとプログラムを終了できます");
 		Display.line();
@@ -40,6 +42,7 @@ public class Main {
 				Display.line(2);
 				
 				System.out.println("(S) 家計簿の内容を検索");
+				System.out.println("(W) 家計簿の記帳");
 				System.out.println("(L) ログアウト");
 
 				
@@ -49,7 +52,9 @@ public class Main {
 				
 				if (uChoice.equals("S")) {
 					Search.CSearch(Filename);
-				} else if (uChoice.equals("L")){
+				}else if (uChoice.equals("W")) {
+					Write.fileWrite(Filename);
+				}else if (uChoice.equals("L")){
 					Display.line(1);
 					System.out.println("ログアウトします");
 					KB.close();

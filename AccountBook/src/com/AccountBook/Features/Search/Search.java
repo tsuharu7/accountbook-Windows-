@@ -1,18 +1,16 @@
 package com.AccountBook.Features.Search;
 
-import com.AccountBook.Display.*;
-import com.AccountBook.Exit.*;
-
-
-import java.io.IOException;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import com.AccountBook.Display.Display;
+import com.AccountBook.Exit.Exit;
 
 
 
 public class Search {
 	
-	public static void CSearch(String FN) throws SecurityException, IOException {
+	public static void CSearch(String FN) throws Exception {
 		
 		ArrayList<String[]> resultBack = new ArrayList<String[]>();
 		programbreak:
@@ -147,7 +145,6 @@ public class Search {
 								}else if (ovChoice.matches("y|Y")) {
 									break ovChoicebreak;
 								}else if (ovChoice.matches("n|N")) {
-									KB.close();
 									break programbreak;
 								}else {
 									Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");

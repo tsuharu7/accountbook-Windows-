@@ -1,30 +1,28 @@
 package com.AccountBook.Features.Search;
 
-import com.AccountBook.Display.*;
-import com.AccountBook.Exit.Exit;
-import com.AccountBook.File.*;
-import com.AccountBook.Common.*;
-
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Scanner;
+
+import com.AccountBook.Common.Common;
+import com.AccountBook.Display.Display;
+import com.AccountBook.Exit.Exit;
+import com.AccountBook.File.FileRead;
 
 
 
 public class SearchCat {
 	
-	public static ArrayList<String[]> searchCat(String FileName) throws SecurityException, IOException{
+	public static ArrayList<String[]> searchCat(String FileName) throws Exception{
+		Scanner KB = new Scanner(System.in);
+		ArrayList<String[]> resBack = new ArrayList<String[]>();
+		ArrayList<String[]> catBack = new ArrayList<String[]>();
+		resBack = FileRead.getResult(FileName);
+		String uCat = null;
+		String rCat = null;
 		programbreak:
 			while(true) {
-				Scanner KB = new Scanner(System.in);
-				ArrayList<String[]> resBack = new ArrayList<String[]>();
-				ArrayList<String[]> catBack = new ArrayList<String[]>();
-				resBack = FileRead.getResult(FileName);
-				String uCat = null;
-				String rCat = null;
+				
 				
 				CatChoice:
 				while(true) {
@@ -61,12 +59,14 @@ public class SearchCat {
 							
 						}
 					}
+					break programbreak;
 					
-					Collections.reverse(catBack);
-					return catBack;
+					
 				}
 
 			}
+		Collections.reverse(catBack);
+		return catBack;
 
 		
 	}

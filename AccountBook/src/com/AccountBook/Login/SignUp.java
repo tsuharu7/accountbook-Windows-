@@ -91,7 +91,7 @@ public class SignUp {
 			
 			}
 		
-		KB.close();	
+			
 	}
 
 }

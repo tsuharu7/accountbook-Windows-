@@ -71,7 +71,7 @@ public class FileCom {
     		 username = searchPath;
     	 } 
     	 
-    	 return username;
+    	 return fileName + txt;
      }
      
      /*

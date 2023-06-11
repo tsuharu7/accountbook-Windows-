@@ -57,9 +57,8 @@ public class Login {
 						if (feedBack == null) {
 							System.out.println("ユーザー名またはパスワードが正しくありません。再度入力してください");
 						} else {
-							feedBack =fileName;
-							KB.close();
-							return fileName;
+							
+							return feedBack;
 						}
 					}
 			}

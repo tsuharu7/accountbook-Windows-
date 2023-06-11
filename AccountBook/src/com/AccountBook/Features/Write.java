@@ -19,8 +19,6 @@ import com.AccountBook.logs.Logs;
  *
  */
 public class Write {
-	static int count1 = 0;
-	static int count2 = 0;
 	
 	static String name;
 	static String day;
@@ -45,10 +43,8 @@ public class Write {
 				System.out.print("入力：");
 				final String selectCategory = br.readLine();
 				System.out.println();
-				count1++;
 				
-				//カテゴリー入力値チェック・10回間違えたら強制終了
-				if (count1 <= 11) Exit.exit(Filename);;
+				
 				category = Common.getCat(selectCategory);
 				
 				if (!category.equals(null)) {
@@ -73,8 +69,6 @@ public class Write {
 			System.out.print("入力：");
 			day = br.readLine();
 			System.out.println();
-			count2++;
-			if (count2 <= 11) Exit.exit(Filename);
 				
 			if (day.replaceAll("/", "").matches("^[0-9]+$") && day.replaceAll("/", "").length() == 8) break;
 			
@@ -121,6 +115,31 @@ public class Write {
 			fw.write(day + "," + category + "," + name + "," + money);
 		} else {
 			System.out.println("ファイルが存在しないため書き込みに失敗しました。");
+		}
+		
+		while(true) {
+			Display.Println("続けて登録しますか？");
+			Display.line();
+			Display.Println("(Y) はい。再度登録します");
+			Display.Println("(N) いいえ。メインメニューへ戻ります");
+			Display.line();
+			Display.Print("入力:");
+			
+			String ovChoice = br.readLine();
+			if (ovChoice.matches("exit|Exit")){
+				Exit.exit(Filename);
+			}else if (ovChoice.matches("y|Y")) {
+				fileWrite(Filename);
+				break;
+			}else if (ovChoice.matches("n|N")) {
+				
+
+				return;
+				
+			}else {
+				Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");
+				Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
+			}
 		}
 		
 	}
