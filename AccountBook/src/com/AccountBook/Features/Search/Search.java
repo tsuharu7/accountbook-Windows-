@@ -80,7 +80,7 @@ public class Search {
 						Display.Println("　　　利用日　　　|　　　カテゴリー　　　|　　　　　　　　　名前　　　　　　　　　|　　　　金額　　　　|");
 						
 						
-						for (int i = 0; i<resultBack.size(); i++) {
+						for (int i = 0; i<=resultBack.size(); i++) {
 							String[] catchRes = resultBack.get(i);
 							String date = catchRes[0];
 							String group = catchRes[1];
