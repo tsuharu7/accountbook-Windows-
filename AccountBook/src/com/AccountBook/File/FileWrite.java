@@ -13,7 +13,7 @@ import com.AccountBook.Exit.Exit;
 import com.AccountBook.logs.Logs;
 
 /**
- * ID、記入日、カテゴリ、名前、金額を書き込む
+ * 記入日、カテゴリ、名前、金額を書き込む
  *
  */
 public class FileWrite {
@@ -26,6 +26,9 @@ public class FileWrite {
 	 * IDを自動生成する
 	 */
 	public static void fileWrite(String Filename) throws Exception {
+		
+		Logs.printDebugLog(new Object(){}.getClass().getEnclosingClass().getName() , Filename, "START:fileWrite");
+		
 		System.out.println("新規の出費の記帳を行います");
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -136,6 +139,8 @@ public class FileWrite {
 				Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
 			}
 		}
+		
+		Logs.printDebugLog(new Object(){}.getClass().getEnclosingClass().getName(), Filename, "END:fileWrite");
 		
 	}
 	
