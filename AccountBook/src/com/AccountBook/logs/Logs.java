@@ -16,10 +16,14 @@ public class Logs {
 	//エラーログ出力先パス
 	private static final String ErrorLogpath = "C:\\AccountBook\\Logs\\ErrorLog.txt";
 	
+	
+	/*
+	 * 
+	 */
 	public static void printDebugLog(String className, String Filename, String message) throws SecurityException, IOException {
 		String[] fileName = Filename.split(",");
 		String userName = fileName[0];
-		String msg = className + "  " + userName + "," + message;
+		String msg = className + "  " + "ユーザー名：" + userName + " メッセージ：" + message;
 		
 		Logger logger = Logger.getLogger(className);
 		

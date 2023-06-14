@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import com.AccountBook.Common.Common;
 import com.AccountBook.Display.Display;
@@ -13,7 +11,7 @@ import com.AccountBook.Exit.Exit;
 import com.AccountBook.logs.Logs;
 
 /**
- * ID、記入日、カテゴリ、名前、金額を書き込む
+ * 記入日、カテゴリ、名前、金額を書き込む
  *
  */
 public class FileWrite {
@@ -22,10 +20,14 @@ public class FileWrite {
 	static String day;
 	static String category;
 	static int money; 
+	
 	/*
-	 * IDを自動生成する
+	 * @param ファイル名
+	 * @return なし
 	 */
 	public static void fileWrite(String Filename) throws Exception {
+		Logs.printDebugLog(Class.class.getName() , Filename, "START:fileWrite");
+		
 		System.out.println("新規の出費の記帳を行います");
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -71,10 +73,8 @@ public class FileWrite {
 			if (day.replaceAll("/", "").matches("^[0-9]+$") && day.replaceAll("/", "").length() == 8) break;
 			
 			else if (day.matches("T|t")) {
-				Calendar calendar = Calendar.getInstance();
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
-				day = sdf.format(calendar.getTime());
+				day = Common.getDate();
 				break;
 				
 			}	
@@ -128,14 +128,15 @@ public class FileWrite {
 				break;
 			}else if (ovChoice.matches("n|N")) {
 				
-
-				return;
+				break;
 				
 			}else {
 				Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");
 				Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
 			}
 		}
+		
+		Logs.printDebugLog(Class.class.getName() , Filename, "END:fileWrite");
 		
 	}
 	

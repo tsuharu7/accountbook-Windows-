@@ -1,5 +1,8 @@
 package com.AccountBook.Common;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public final class Common {
 	
 	public static String getCat(String selectCategory) {
@@ -48,4 +51,15 @@ public final class Common {
 		return category;
 	}
 
+	/*
+	 * @param なし
+	 * @return 現在日付（yyyy/MM/dd)
+	 */
+	public static String getDate() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		
+		return sdf.format(calendar.getTime());
+	}
 }
