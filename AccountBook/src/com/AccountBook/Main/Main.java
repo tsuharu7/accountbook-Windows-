@@ -15,7 +15,7 @@ public class Main {
 		Scanner KB = new Scanner(System.in);
 		System.out.println("<<TIPS>> プログラムの入力画面でExitと入力するとプログラムを終了できます");
 		Display.line();
-		sleep(3000);
+		sleep(1000);
 	
 		
 		//Loginクラスloginメソッド呼び出し
@@ -31,13 +31,15 @@ public class Main {
 		
 	
 		
-		//メインメニューのセクション名を表示
-		//引数:なし
-		//戻り値:なし
-		Display.sectorMes("メインメニュー");
-		Display.line(2);
+	
 	
 			while(true) {
+				//メインメニューのセクション名を表示
+				//引数:なし
+				//戻り値:なし
+				Display.line(2);
+				Display.sectorMes("メインメニュー");
+				Display.line(2);
 				System.out.println("以下のメニューから実行するものを入力してください");
 				Display.line(2);
 				

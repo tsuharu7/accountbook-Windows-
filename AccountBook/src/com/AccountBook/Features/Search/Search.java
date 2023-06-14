@@ -1,10 +1,12 @@
 package com.AccountBook.Features.Search;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.AccountBook.Display.Display;
 import com.AccountBook.Exit.Exit;
+import com.AccountBook.logs.Logs;
 
 
 
@@ -17,6 +19,7 @@ public class Search {
 			while(true) {
 				Display.line();
 				Display.showTips();
+				sleep(3000);
 				Display.line();
 				
 				Scanner KB = new Scanner(System.in);
@@ -74,83 +77,59 @@ public class Search {
 						//結果の表示
 				
 						Display.line(2);
-						Display.Println(resultBack.size()+"件の項目が見つかりました。");
-						Display.line();
-						Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　結果　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
-						Display.Println("　　　利用日　　　|　　　カテゴリー　　　|　　　　　　　　　名前　　　　　　　　　|　　　　金額　　　　|");
 						
-						
-						for (int i = 0; i<=resultBack.size(); i++) {
-							String[] catchRes = resultBack.get(i);
-							String date = catchRes[0];
-							String group = catchRes[1];
-							String name = catchRes[2];
-							String cost = catchRes[3];
+						if(resultBack.size()!=0) {
+							Display.Println(resultBack.size()+"件の項目が見つかりました。");
+							Display.line();
+							Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　結果　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+							Display.Println("　　　利用日　　　|　　　カテゴリー　　　|　　　　　　　　　名前　　　　　　　　　|　　　　金額　　　　|");
 							
-							//利用日
-							System.out.print("　"+date+"　　");
 							
-							//カテゴリー
-							int groupAster = (10-group.length())/2;
-							for (int a =1; i<=groupAster; i++) {
-								Display.Print("　");
-							}
-							System.out.print(group);
-							for (int a =1; i<=groupAster; i++) {
-								Display.Print("　");
-							}
-							Display.Print("　");
-							
-							//名前
-							int nameAster =(20-name.length())/2;
-							for (int a =1; i<=nameAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print(name);
-							for (int a =1; i<=nameAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print("　");
-							
-							//料金
-							int costAster = (10-cost.length())/2;
-							for (int a =1; i<=costAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print(cost);
-							for (int a =1; i<=costAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print("　");
-							
-							//改行
-							System.out.println();
-						}
-						
-						Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　以上　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
-						
-						Display.line(3);
-						ovChoicebreak:
-							while(true) {
-								Display.Println("続けて検索しますか？");
-								Display.line();
-								Display.Println("(Y) はい。再度検索します");
-								Display.Println("(N) いいえ。メインメニューへ戻ります");
-								Display.line();
-								Display.Print("入力:");
+							for (int i = 0; i<resultBack.size(); i++) {
+								String[] catchRes = resultBack.get(i);
+								String date = catchRes[0];
+								String group = catchRes[1];
+								String name = catchRes[2];
+								String cost = catchRes[3];
 								
-								String ovChoice = KB.nextLine();
-								if (ovChoice.matches("exit|Exit")){
-									Exit.exit(FileName);
-								}else if (ovChoice.matches("y|Y")) {
-									break ovChoicebreak;
-								}else if (ovChoice.matches("n|N")) {
-									break programbreak;
-								}else {
-									Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");
-									Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
-								}
-							}
+								System.out.println("　"+date+"　" +"　"+group+"　"+"　"+name+"　"+"　"+cost+"　");
+								
+							}	
+								
+								//改行
+								System.out.println();
+								
+								Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　以上　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+								Display.line(3);
+								ovChoicebreak:
+									while(true) {
+										Display.Println("続けて検索しますか？");
+										Display.line();
+										Display.Println("(Y) はい。再度検索します");
+										Display.Println("(N) いいえ。メインメニューへ戻ります");
+										Display.line();
+										Display.Print("入力:");
+										
+										String ovChoice = KB.nextLine();
+										if (ovChoice.matches("exit|Exit")){
+											Exit.exit(FileName);
+										}else if (ovChoice.matches("y|Y")) {
+											break ovChoicebreak;
+										}else if (ovChoice.matches("n|N")) {
+											break programbreak;
+										}else {
+											Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");
+											Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
+										}
+									}
+							
+						}else  {
+							Display.Println("0件の登録が見つかりました。");
+							Display.Println("<<TIPS>> メインメニューから（W)を選択して登録を開始してください");
+							Display.Println("メインメニューへ戻ります");
+							sleep(1000);
+							break programbreak;
+						}
 						
 						
 						
@@ -159,4 +138,12 @@ public class Search {
 			}
 	}
 
+	public static void sleep(int num) throws SecurityException, IOException {
+		try {
+			Thread.sleep(num);
+		} catch (InterruptedException e) {
+			Logs.printErrorLog(e);
+		}
+	}
+	
 }

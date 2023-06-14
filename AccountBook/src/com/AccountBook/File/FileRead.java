@@ -21,8 +21,6 @@ public class FileRead {
 			String line = reader.readLine();
 
 			while (line != null) {
-				System.out.println(line);
-				
 				String rLine = line;
 				LineDat = rLine.split(",");
 				reList.add(LineDat);
