@@ -12,9 +12,9 @@ import java.util.logging.SimpleFormatter;
 public class Logs {
 	
 	//ログファイル出力先パス
-	private static final String DebugLogpath = ".\\SystemsLogs\\DebugLog.txt";
+	private static final String DebugLogpath = "C:\\AccountBook\\Logs\\DebugLog.txt";
 	//エラーログ出力先パス
-	private static final String ErrorLogpath = ".\\SystemsLogs\\ErrorLog.txt";
+	private static final String ErrorLogpath = "C:\\AccountBook\\Logs\\ErrorLog.txt";
 	
 	public static void printDebugLog(String className, String Filename, String message) throws SecurityException, IOException {
 		String[] fileName = Filename.split(",");
