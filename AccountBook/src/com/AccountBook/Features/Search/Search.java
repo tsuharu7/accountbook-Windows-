@@ -72,91 +72,98 @@ public class Search {
 								}
 							}
 						//結果の表示
-				
-						Display.line(2);
-						Display.Println(resultBack.size()+"件の項目が見つかりました。");
-						Display.line();
-						Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　結果　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
-						Display.Println("　　　利用日　　　|　　　カテゴリー　　　|　　　　　　　　　名前　　　　　　　　　|　　　　金額　　　　|");
 						
-						
-						for (int i = 0; i<=resultBack.size(); i++) {
-							String[] catchRes = resultBack.get(i);
-							String date = catchRes[0];
-							String group = catchRes[1];
-							String name = catchRes[2];
-							String cost = catchRes[3];
+						//ResultBackに数値がある場合（検索結果が１件以上の場合）
+						if (resultBack.size() !=0) {
+							Display.line(2);
+							Display.Println(resultBack.size()+"件の項目が見つかりました。");
+							Display.line();
+							Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　結果　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+							Display.Println("　　　利用日　　　|　　　　カテゴリー　　　|　　　　　　　　　名前　　　　　　　　　|　　　　金額　　　　|");
 							
-							//利用日
-							System.out.print("　"+date+"　　");
 							
-							//カテゴリー
-							int groupAster = (10-group.length())/2;
-							for (int a =1; i<=groupAster; i++) {
-								Display.Print("　");
-							}
-							System.out.print(group);
-							for (int a =1; i<=groupAster; i++) {
-								Display.Print("　");
-							}
-							Display.Print("　");
-							
-							//名前
-							int nameAster =(20-name.length())/2;
-							for (int a =1; i<=nameAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print(name);
-							for (int a =1; i<=nameAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print("　");
-							
-							//料金
-							int costAster = (10-cost.length())/2;
-							for (int a =1; i<=costAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print(cost);
-							for (int a =1; i<=costAster;i++) {
-								Display.Print("　");
-							}
-							Display.Print("　");
-							
-							//改行
-							System.out.println();
-						}
-						
-						Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　以上　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
-						
-						Display.line(3);
-						ovChoicebreak:
-							while(true) {
-								Display.Println("続けて検索しますか？");
-								Display.line();
-								Display.Println("(Y) はい。再度検索します");
-								Display.Println("(N) いいえ。メインメニューへ戻ります");
-								Display.line();
-								Display.Print("入力:");
+							for (int i = 0; i<=resultBack.size(); i++) {
+								String[] catchRes = resultBack.get(i);
+								String date = catchRes[0];
+								String group = catchRes[1];
+								String name = catchRes[2];
+								String cost = catchRes[3];
 								
-								String ovChoice = KB.nextLine();
-								if (ovChoice.matches("exit|Exit")){
-									Exit.exit(FileName);
-								}else if (ovChoice.matches("y|Y")) {
-									break ovChoicebreak;
-								}else if (ovChoice.matches("n|N")) {
-									break programbreak;
-								}else {
-									Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");
-									Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
+								//利用日
+								System.out.print("　 "+date+" 　");
+								
+								//カテゴリー
+								int groupAster = (12-group.length())/2;
+								for (int a =1; i<=groupAster; i++) {
+									Display.Print("　");
 								}
+								System.out.print(group);
+								for (int a =1; i<=groupAster; i++) {
+									Display.Print("　");
+								}
+								Display.Print("　");
+								
+								//名前
+								int nameAster =(30-name.length())/2;
+								for (int a =1; i<=nameAster;i++) {
+									Display.Print("　");
+								}
+								Display.Print(name);
+								for (int a =1; i<=nameAster;i++) {
+									Display.Print("　");
+								}
+								Display.Print("　");
+								
+								//料金
+								int costAster = (12-cost.length())/2;
+								for (int a =1; i<=costAster;i++) {
+									Display.Print("　");
+								}
+								Display.Print(cost);
+								for (int a =1; i<=costAster;i++) {
+									Display.Print("　");
+								}
+								Display.Print("　");
+								
+								//改行
+								System.out.println();
 							}
-						
-						
+						}else {
+							Display.line();
+							System.out.println("検索条件に一致する検索結果は見つかりませんでした。");
+							Display.Println("<<TIPS>>検索条件を見直してみてください");
+							Display.Println("<<TIPS>> Cancelを入力してメニューへ戻り（W)から家計簿記帳が可能です");
+						}
+							Display.line(1);
+							Display.Println("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊　以上　＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+							
+							Display.line(3);
+							ovChoicebreak:
+								while(true) {
+									Display.Println("続けて検索しますか？");
+									Display.line();
+									Display.Println("(Y) はい。再度検索します");
+									Display.Println("(N) いいえ。メインメニューへ戻ります");
+									Display.line();
+									Display.Print("入力:");
+									
+									String ovChoice = KB.nextLine();
+									if (ovChoice.matches("exit|Exit")){
+										Exit.exit(FileName);
+									}else if (ovChoice.matches("y|Y")) {
+										break ovChoicebreak;
+									}else if (ovChoice.matches("n|N")) {
+										break programbreak;
+									}else {
+										Display.Println("<<<ERROR>>> 正しい入力を確認できませんでした。");
+										Display.Println("<<TIPS>> 入力できるのは Y/N/Exitのみです");
+									}
+								}
+						}
 						
 				}
 		
-			}
 	}
+	
 
 }

@@ -26,18 +26,22 @@ public class Main {
 		//login ログを記録するメソッド呼び出し
 		//引数：なし
 		//戻り値:なしn
-		Logs.printDebugLog(Class.class.getName(), Filename, "ログインしました");
+Logs.printDebugLog(Class.class.getName(), Filename, "ログインしました");
 		
 		
 	
 		
-		//メインメニューのセクション名を表示
-		//引数:なし
-		//戻り値:なし
-		Display.sectorMes("メインメニュー");
-		Display.line(2);
-	
+
 			while(true) {
+				
+				//メインメニューのセクション名を表示
+				//引数:なし
+				//戻り値:なし
+				Display.line(2);
+				Display.sectorMes("メインメニュー");
+				Display.line(2);
+			
+				
 				System.out.println("以下のメニューから実行するものを入力してください");
 				Display.line(2);
 				
