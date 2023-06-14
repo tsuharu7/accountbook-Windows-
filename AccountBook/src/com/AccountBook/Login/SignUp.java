@@ -76,9 +76,10 @@ public class SignUp {
 				String feedBack = FileCom.CreateFile(fileName);
 				
 				if (feedBack.equals("success")){
-					System.out.println("アカウント作成が完了しました.ようこそAccountBookの世界へ");
+					System.out.println("<<< アカウント作成が完了しました.ようこそAccountBookの世界へ! >>>");
 					 Logs.printDebugLog(Class.class.getName(), fileName, "新規アカウントを作成");
-					System.out.println("新しく作成したアカウントでログインをお試しください");
+					System.out.println("<<< 新しく作成したアカウントでログインをお試しください >>>");
+					Display.line(2);
 					break userRegloop;
 				}else if (feedBack.equals("exist")) {
 					System.out.println("<<<ERROR>>>ユーザー名が既に存在しています。別のユーザー名をお試しください");
