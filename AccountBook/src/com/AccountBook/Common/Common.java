@@ -51,12 +51,16 @@ public final class Common {
 		return category;
 	}
 
+
+	/*
+	 * @param なし
+	 * @return 現在日付（yyyy/MM/dd)
+	 */
 	public static String getDate() {
 		Calendar calendar = Calendar.getInstance();
+		calendar.getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
-		//フォーマットを指定
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyymmdd");
-		//yyyymmddの形式の文字列
 		return sdf.format(calendar.getTime());
 	}
 }

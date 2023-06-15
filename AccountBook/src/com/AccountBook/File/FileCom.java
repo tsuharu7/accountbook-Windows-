@@ -82,7 +82,7 @@ public class FileCom {
       * @return なし
       */
      
-     private static void checkDir(String userpath) {
+     public static void checkDir(String userpath) {
     	 File dir = new File(userpath);
     	 
     	 if (!dir.exists()) {
