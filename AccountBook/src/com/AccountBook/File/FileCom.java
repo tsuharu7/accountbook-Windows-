@@ -1,7 +1,6 @@
 package com.AccountBook.File;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,10 +24,12 @@ public class FileCom {
 	 * @return ファイル作成できた場合、true、それ以外false
 	 */
 	
-	public static String CreateFile(String fileName) throws SecurityException, IOException {
+	public static String CreateFile(String fileName) throws Exception {
+		Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "START:" + new Object() {}.getClass().getEnclosingMethod().getName());
+		
 		//ファイル作成できたか判定する文字列
 		String result;
-		checkDir(userpath);
+		checkDir(userpath, fileName);
 		//ファイルパス
 		String path = userpath + "\\" + fileName + txt;
 		
@@ -47,9 +48,11 @@ public class FileCom {
 		} catch (Exception e) {
 			
 			result = "error";
-			Logs.printErrorLog(e);
+			Logs.printErrorLog(new Object() {}.getClass().getEnclosingClass().getName(), e.getMessage());
 		} 
 		
+		
+		Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "END:" + new Object() {}.getClass().getEnclosingMethod().getName());
 		return result;
 	}
 	
@@ -59,10 +62,10 @@ public class FileCom {
 	 * @return ファイル名
 	 */
 
-     public static String SearchFile(String fileName) {
+     public static String SearchFile(String fileName) throws Exception {
+    	 Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "START:" + new Object() {}.getClass().getEnclosingMethod().getName());
+    	 
     	 //ユーザー名初期化
-    	 
-    	 
     	 String username = null;
     	 
     	 String searchPath = userpath + "\\" + fileName + txt;
@@ -73,6 +76,7 @@ public class FileCom {
     		 username = fileName;
     	 } 
     	 
+    	 Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "END:" + new Object() {}.getClass().getEnclosingMethod().getName());
     	 return username;
      }
      
@@ -82,11 +86,15 @@ public class FileCom {
       * @return なし
       */
      
-     public static void checkDir(String userpath) {
+     public static void checkDir(String userpath, String fileName) throws Exception {
+    	 Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "START:" + new Object() {}.getClass().getEnclosingMethod().getName());
+    	 
     	 File dir = new File(userpath);
     	 
     	 if (!dir.exists()) {
     		 dir.mkdir();
     	 }
+    	 
+    	 Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), "", "END:" + new Object() {}.getClass().getEnclosingMethod().getName());
      }
 }

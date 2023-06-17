@@ -1,6 +1,5 @@
 package com.AccountBook.Login;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import com.AccountBook.Display.Display;
@@ -10,7 +9,7 @@ import com.AccountBook.logs.Logs;
 
 public class SignUp {
 	
-	public static void signup() throws SecurityException, IOException {
+	public static void signup() throws Exception {
 		
 		Display.line(1);
 		//部分遷移メッセージの表示

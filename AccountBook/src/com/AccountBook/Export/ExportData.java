@@ -21,14 +21,14 @@ public class ExportData {
 	 * @param
 	 * @return
 	 */
-	public void exportData(String Filename) {
+	public void exportData(String Filename) throws Exception {
 		
 		String[] list = Filename.split(",");
 		String username = list[0];
 		String path = ".\\ExportFile\\";
 		String xlsx = ".xlsx";
 		
-		FileCom.checkDir(path);
+		FileCom.checkDir(path, Filename);
 		
 		//Book作成
 		Workbook workbook = new XSSFWorkbook();
@@ -65,6 +65,9 @@ public class ExportData {
 				workbook.close();
 				
 			}
+			
+			br.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

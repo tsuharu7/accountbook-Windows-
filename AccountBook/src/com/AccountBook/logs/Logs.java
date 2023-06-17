@@ -1,6 +1,5 @@
 package com.AccountBook.logs;
 
-import java.io.IOException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -8,7 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-
+/*
+ * ログを記録する
+ */
 public class Logs {
 	
 	//ログファイル出力先パス
@@ -18,9 +19,11 @@ public class Logs {
 	
 	
 	/*
-	 * 
+	 * ログ出力機能
+	 * @param クラス名、ファイル名、メッセージ
+	 * @return なし
 	 */
-	public static void printDebugLog(String className, String Filename, String message) throws SecurityException, IOException {
+	public static void printDebugLog(String className, String Filename, String message) throws Exception {
 		String[] fileName = Filename.split(",");
 		String userName = fileName[0];
 		String msg = className + "  " + "ユーザー名：" + userName + " メッセージ：" + message;
@@ -34,18 +37,29 @@ public class Logs {
 		logger.setLevel(Level.INFO);
 		removeConsoleHandler(logger);
 		logger.log(Level.INFO, msg);
+		
+		//クローズ処理
+		fh.close();
 	}
 	
-	public static void printErrorLog(Object msg) throws SecurityException, IOException  {
+	/*
+	 * エラーログ出力機能
+	 * @param クラス名、メッセージ
+	 * @return なし
+	 */
+	public static void printErrorLog(String className, String msg) throws Exception  {
         Logger logger = Logger.getLogger("Error");
 		
 		FileHandler fh = new FileHandler(ErrorLogpath, true);
 		fh.setFormatter(new SimpleFormatter());
 		logger.addHandler(fh);
 		
-		logger.setLevel(Level.INFO);
+		logger.setLevel(Level.ALL);
 		removeConsoleHandler(logger);
-		logger.log(Level.INFO, "エラーメッセージ", msg);
+		logger.log(Level.ALL, "エラー", msg);
+		
+		//クローズ処理
+		fh.close();
 		
 	}
 	

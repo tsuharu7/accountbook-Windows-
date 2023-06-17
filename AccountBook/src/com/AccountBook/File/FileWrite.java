@@ -27,7 +27,7 @@ public class FileWrite {
 	 */
 	public static void fileWrite(String Filename) throws Exception {
 
-		Logs.printDebugLog(Class.class.getName() , Filename, "START:fileWrite"); 
+		Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName() , Filename, "START:" + new Object() {}.getClass().getEnclosingMethod().getName()); 
 		
 		System.out.println("新規の出費の記帳を行います");
 		
@@ -57,7 +57,7 @@ public class FileWrite {
 				
 				
 			} catch (IOException e) {
-				Logs.printErrorLog(e);
+				Logs.printErrorLog(new Object() {}.getClass().getEnclosingClass().getName(), e.getMessage());
 			}
 		}
 		
@@ -102,7 +102,8 @@ public class FileWrite {
 			money = Integer.parseInt(br.readLine());
 				
 		} catch (NumberFormatException e) {
-			Logs.printErrorLog(e.getMessage());
+			System.out.println("数値を入力してください");
+			Logs.printErrorLog(new Object() {}.getClass().getEnclosingClass().getName(), e.getMessage());
 		}
 		
 		if (!FileCom.SearchFile(Filename).equals(null)) {
@@ -139,7 +140,7 @@ public class FileWrite {
 		
 
 
-		Logs.printDebugLog(Class.class.getName() , Filename, "END:fileWrite");
+		Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName() , Filename, "END:" + new Object() {}.getClass().getEnclosingMethod().getName());
         
 		
 	}

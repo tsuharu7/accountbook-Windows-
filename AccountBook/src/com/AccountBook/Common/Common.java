@@ -3,6 +3,9 @@ package com.AccountBook.Common;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/*
+ * 共通で使用する機能を持つ
+ */
 public final class Common {
 	
 	public static String getCat(String selectCategory) {

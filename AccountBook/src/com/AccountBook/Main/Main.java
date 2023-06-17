@@ -1,6 +1,5 @@
 package com.AccountBook.Main;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import com.AccountBook.Display.Display;
@@ -22,15 +21,6 @@ public class Main {
 		//引数:なし
 		//戻り値；String型ファイル名
 		String Filename = Login.login();
-		
-		//login ログを記録するメソッド呼び出し
-		//引数：なし
-		//戻り値:なしn
-Logs.printDebugLog(Class.class.getName(), Filename, "ログインしました");
-		
-		
-	
-		
 
 			while(true) {
 				
@@ -62,7 +52,7 @@ Logs.printDebugLog(Class.class.getName(), Filename, "ログインしました");
 					Display.line(1);
 					System.out.println("ログアウトします");
 					KB.close();
-					Logs.printDebugLog(Class.class.getName(), Filename, "ログアウトしました");
+					Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), Filename, "ログアウトしました");
 					System.exit(0);
 				}else {
 					System.out.println("正しい選択を確認できませんでした");
@@ -73,11 +63,11 @@ Logs.printDebugLog(Class.class.getName(), Filename, "ログインしました");
 		
 
 	}
-	public static void sleep(int num) throws SecurityException, IOException {
+	public static void sleep(int num) throws Exception {
 		try {
 			Thread.sleep(num);
 		} catch (InterruptedException e) {
-			Logs.printErrorLog(e);
+			Logs.printErrorLog(new Object() {}.getClass().getEnclosingClass().getName(), e.getMessage());
 		}
 	}
 

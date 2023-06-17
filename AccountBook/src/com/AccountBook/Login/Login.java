@@ -1,16 +1,16 @@
 package com.AccountBook.Login;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import com.AccountBook.Display.Display;
 import com.AccountBook.Exit.Exit;
 import com.AccountBook.File.FileCom;
+import com.AccountBook.logs.Logs;
 
 
 public class Login {
 	
-	public static String login() throws SecurityException, IOException {
+	public static String login() throws Exception {
 			while(true) {
 				Display.sectorMes("ようこそ！　Ａｃｃｏｕｎｔ　Ｂｏｏｋへ！");
 				Display.line(1);
@@ -56,7 +56,10 @@ public class Login {
 						
 						if (feedBack == null) {
 							System.out.println("ユーザー名またはパスワードが正しくありません。再度入力してください");
+							
+							Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "ログインに失敗しました");
 						} else {
+							Logs.printDebugLog(new Object() {}.getClass().getEnclosingClass().getName(), fileName, "ログインしました");
 							
 							return feedBack;
 						}
